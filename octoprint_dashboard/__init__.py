@@ -158,6 +158,8 @@ class DashboardPlugin(octoprint.plugin.SettingsPlugin,
                 self.cpu_temp = int(round((thermal["cpu_thermal"][0][1])))
             elif 'soc_thermal' in thermal:  # BananaPi
                 self.cpu_temp = int(round(float(thermal['soc_thermal'][0][1])*1000))
+            elif 'soc-thermal' in thermal:  # RockPi
+                self.cpu_temp = int(round(float(thermal['soc-thermal'][0][1])*1000))
             elif 'coretemp' in thermal:  # Intel
                 for temp in range(0, len(thermal["coretemp"]), 1):
                     temp_sum = temp_sum+thermal["coretemp"][temp][1]
